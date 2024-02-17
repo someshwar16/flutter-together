@@ -87,5 +87,19 @@ Run the application
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+https://github.com/someshwar16/flutter-together/assets/83568897/488d62d1-35b3-4c4b-ab40-cbf46cd9e347
+
+![01](https://github.com/someshwar16/flutter-together/assets/83568897/5ecfabc9-6eef-4ca8-a5ca-21485d7df188)
+![02](https://github.com/someshwar16/flutter-together/assets/83568897/4d41ecbb-87c3-4f61-8c52-b57da1cb8c0b)
+![03](https://github.com/someshwar16/flutter-together/assets/83568897/a514e29b-9cc0-4c07-aa83-c2fd56532ef4)
+
+# IOS Screenshot
+
+<img width="400" alt="image" src="https://github.com/someshwar16/flutter-together/assets/83568897/1188bc86-9508-4b69-8497-764e1a368a0c">
+<img width="393" alt="image" src="https://github.com/someshwar16/flutter-together/assets/83568897/d391839a-9d6d-404a-a5b2-909ba7a9f912">
+
+
+
 
