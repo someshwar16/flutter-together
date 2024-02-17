@@ -1,16 +1,91 @@
-# flutter_together
 
-A new Flutter project.
+# Flutter Together 
 
-## Getting Started
+This application showcase the basic API calling from mock API. In this application we are reteriving the data from mock API and implemented the pagination i.e. added infinite scroll.
 
-This project is a starting point for a Flutter application.
+For Code Design I have used following pattern 
 
-A few resources to get you started if this is your first Flutter project:
+       main.dart
+       \lib\src\feature\
+                    discovery_page\
+                                data\model
+                                        \info_data.dart
+                                        \model_data.dart
+                                data\service\mock_api.dart
+                                view\discovery_page.dart
+    
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Implementing Pagination 
+
+
+For implementing pagination I have used pull_to_refresh package. I wrapped my ListView Builder with SmartRefresher and attached the RefreshController with it.
+
+ ```
+   final RefreshController _refreshController = RefreshController();
+```
+I used onRefresh to implement the pull down refresh feature and used onLoading to implement the pagination logic.
+
+```
+onRefresh: () {
+        mockApi.fetchPages(isRefresh: true).then((value) {
+          setState(() {
+            currentPage = 1;
+          });
+          _refreshController.refreshCompleted();
+        });
+      },
+```
+
+```
+   onLoading: () {
+        //On reaching the bottom of the page we will call the API to fetch the next page and add it to the existing list
+        mockApi.fetchPages(page: currentPage).then((value) {
+          setState(() {
+            modelData!.data
+                .addAll(value.data); //Add the new data to the existing list
+            currentPage++; //Increment the current page
+          });
+          _refreshController.loadComplete();
+        });
+      },
+```
+
+In my MockApi class I proceed by taking currentPage as parameter. And append it with our URL tot get the next page data.
+
+```
+ final url =
+        'https://api-stg.together.buzz/mocks/discovery?page=$page&limit=10';
+```
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/someshwar16/flutter-together.git
+```
+
+Go to the project directory
+
+```bash
+  cd flutter_together
+```
+
+Install dependencies
+
+```bash
+  flutter pub get 
+```
+
+Run the application
+
+```bash
+  flutter run
+```
+
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
